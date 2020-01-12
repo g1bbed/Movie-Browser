@@ -7,36 +7,39 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./MovieCard.css";
+import { Grid } from "@material-ui/core";
 
 function MovieCard({ movie, selectMovie }) {
   return (
     <Fragment>
-      <Card className="movie-card">
-        <CardActionArea>
-          <CardMedia
-            className="movie-image"
-            image={`http://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
-            title={movie.title}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {movie.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {movie.overview}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => selectMovie(movie)}
-          >
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
+      <Grid item xs={12} sm={6} md={4}>
+        <Card className="movie-card">
+          <CardActionArea>
+            <CardMedia
+              className="movie-image"
+              image={`http://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
+              title={movie.title}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {movie.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {movie.overview}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => selectMovie(movie)}
+            >
+              Learn More
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
     </Fragment>
   );
 }
