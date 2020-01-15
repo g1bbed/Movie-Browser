@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "./components/MovieCard";
 import MovieDialog from "./components/MovieDialog";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import "./App.css";
@@ -28,20 +28,7 @@ const outerTheme = createMuiTheme({
   }
 });
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
-
 function App() {
-  const classes = useStyles();
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [searchText, setSearchText] = useState("");
@@ -107,7 +94,7 @@ function App() {
         </Container>
         <Container maxWidth="lg">
           <Grid container spacing={0}>
-            <Typography variant="h6" className={classes.title} style={{color: "white", paddingTop: "12px", paddingBottom: "12px"}}>
+            <Typography variant="h6" style={{color: "white", paddingTop: "12px", paddingBottom: "12px"}}>
               Popular movies
             </Typography>
           </Grid>

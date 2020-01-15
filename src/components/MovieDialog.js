@@ -1,71 +1,86 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import React, { Fragment } from "react";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import CardMedia from "@material-ui/core/CardMedia";
+import {
+  Slide,
+  List,
+  ListItem,
+  Toolbar,
+  IconButton,
+  Divider
+} from "@material-ui/core";
+import ArrowBack from "@material-ui/icons/ArrowBack";
+import "./MovieDialog.css";
+
+var dateFormat = require("dateformat");
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function MovieDialog({ handleClose, movie }) {
-  let title,
+  let monthyear,
+    percentagepath,
     content = null;
+  let bkgrndimage = "none";
   if (movie) {
-    title = <DialogTitle id="form-dialog-title">{movie.title}</DialogTitle>;
+    percentagepath = Math.round((movie.vote_average * 100) / 10);
+    monthyear = dateFormat(movie.release_date, "mmmm, yyyy");
+    bkgrndimage = `url(http://image.tmdb.org/t/p/w1280${movie.backdrop_path})`;
     content = (
-      <DialogContent>
-        <DialogContentText>{movie.overview}</DialogContentText>
-        <CardMedia
-          className="movie-image"
-          image={`http://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
-          title={movie.title}
-        />
-        <TextField
-          label="Release date"
-          type="date"
-          value={movie.release_date}
-          fullWidth
-          disabled
-        />
-        <TextField
-          label="Popularity"
-          value={movie.popularity}
-          fullWidth
-          disabled
-        />
-        <TextField
-          label="Vote average"
-          value={movie.vote_average}
-          fullWidth
-          disabled
-        />
-        <TextField
-          label="Vote count"
-          value={movie.vote_count}
-          fullWidth
-          disabled
-        />
-      </DialogContent>
+      <List>
+        <ListItem>
+          <div className="movie-selected-section">
+            <img
+              className="movie-selected-poster"
+              src={`http://image.tmdb.org/t/p/w300${movie.poster_path}`}
+              alt="movieposter"
+            />
+            <h3>{movie.title}</h3>
+            <div className="movie-selected-label1">{monthyear}</div>
+            <div className="movie-selected-label2">
+              {percentagepath}% user score
+            </div>
+          </div>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <div className="movie-selected-overview">
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+          </div>
+        </ListItem>
+      </List>
     );
   }
 
   return (
-    <div>
+    <Fragment>
       <Dialog
+        fullScreen
         open={!!movie}
         onClose={() => handleClose(null)}
-        aria-labelledby="form-dialog-title"
+        TransitionComponent={Transition}
       >
-        {title}
-        {content}
-        <DialogActions>
-          <Button onClick={() => handleClose(null)} color="primary">
-            Close
-          </Button>
-        </DialogActions>
+        <div
+          className="movie-selected-root"
+          style={{
+            backgroundImage: `${bkgrndimage}`
+          }}
+        >
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={() => handleClose(null)}
+              aria-label="ArrowBack"
+            >
+              <ArrowBack />
+            </IconButton>
+          </Toolbar>
+          {content}
+        </div>
       </Dialog>
-    </div>
+    </Fragment>
   );
 }
 

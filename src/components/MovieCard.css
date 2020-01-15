@@ -1,8 +1,115 @@
-.movie-image {
-    height: 169px;
-}
-
 .movie-card {
     margin-bottom: 8px;
-    width: 98%;
+    width: 100%;
+    background: none !important;
   }
+
+  .movie-image-box {
+    position: relative;
+    display: inline-block;
+}
+
+.movie-image {
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.moviecard-span-green {
+    background: #02bc6f;
+    font-family: Roboto;
+    color: #fff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 10rem;
+    display: inline-block;
+    padding: .25em .4em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+
+.moviecard-span-orange {
+    background: #4902A3;
+    font-family: Roboto;
+    color: #fff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 10rem;
+    display: inline-block;
+    padding: .25em .4em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+
+.moviecard-span-red {
+    background: #D1225B;
+    font-family: Roboto;
+    color: #fff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 10rem;
+    display: inline-block;
+    padding: .25em .4em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+
+
+.movie-card p {
+    color: #fff;
+    font-weight: 100;
+    padding-top: 0px;
+    padding-left: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.movie-card p span {
+    color: #A1D1E6;
+}
+
+.MuiCardContent-root {
+    padding: 5px !important;
+}
+
+.movie-image-box {
+    position: relative;
+    display: inline-block;
+}
+
+.movie-image {
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.MuiList-root {
+    padding-top: 65px !important;
+}
+
+.movie-badge {
+    position: absolute;
+    left: 6px;
+    top: 5px;
+    width: 23px;
+    height: 23px;
+    border-radius: 10px;
+}
